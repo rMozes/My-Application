@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Study Application</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_my_activity1">Activity Life Cycle</string>
+    <string name="title_activity_my_activity2">Gesture Detector || Intent</string>
+    <string name="Third_lesson_activity_title">List View|| Custom Item and Res</string>
+    <string name="button_1_text">Start Second Activity</string>
+    <string name="button_2_text">Start Activity from Third Lesson</string>
+
+    <string name="item_string_name">Name:</string>
+    <string name="item_string_second_name">Second Name:</string>
+
+
+</resources>

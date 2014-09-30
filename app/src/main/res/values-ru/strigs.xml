@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Обучалка</string>
+    <string name="hello_world">Привет Мир!</string>
+    <string name="action_settings">Настройки</string>
+    <string name="title_activity_my_activity1">Жизненные циклы Активити</string>
+    <string name="title_activity_my_activity2">Определитель Жестов || Намерение</string>
+    <string name="Third_lesson_activity_title">Лист || Свои Ячейки и ресурсы</string>
+
+    <string name="button_1_text">Запустить Второе Активити </string>
+    <string name="button_2_text">Запуск Активити из третьего Урока</string>
+
+    <string name="item_string_name">Имя:</string>
+    <string name="item_string_second_name">Фамилия:</string>
+
+</resources>
