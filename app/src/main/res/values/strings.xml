@@ -12,6 +12,8 @@
 
     <string name="item_string_name">Name:</string>
     <string name="item_string_second_name">Second Name:</string>
+    <string name="detail_btn">Detail</string>
+    <string name="detail_activity">Detail Activity</string>
 
 
 </resources>

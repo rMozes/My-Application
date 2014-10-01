@@ -32,6 +32,11 @@
             android:name=".AsyncActivity"
             android:label="@string/title_activity_my_activity2" >
         </activity>
+
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/detail_activity">
+        </activity>
     </application>
 
 </manifest>

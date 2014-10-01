@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="start_color">#ff747474</color>
+    <color name="end_color">#ffbebebe</color>
+    <color name="text_simple">#ffffff</color>
+    <color name="text_pressed">#556699</color>
+</resources>
