@@ -43,6 +43,7 @@ public class DetailFragment extends Fragment implements PictureDownloader.Update
     private TextView mName;
     private TextView mText;
     private ImageView mImageView;
+    private ProgressBar mProgress;
     private PictureDownloader downloader;
     private Handler mHandler;
 
@@ -59,6 +60,7 @@ public class DetailFragment extends Fragment implements PictureDownloader.Update
     @Override
     public void updateImageView(ImageView view, Bitmap bitmap) {
         view.setImageBitmap(bitmap);
+        mProgress.setVisibility(View.GONE);
     }
 
     @Override
@@ -83,6 +85,7 @@ public class DetailFragment extends Fragment implements PictureDownloader.Update
         mName = (TextView) view.findViewById(R.id.name_detail_fragment);
         mText = (TextView) view.findViewById(R.id.text_detail_fragment);
         mImageView = (ImageView) view.findViewById(R.id.picture_detail_fragment);
+        mProgress = (ProgressBar) view.findViewById(R.id.progress);
 
         return view;
     }
