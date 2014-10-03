@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.kevinsawicki.http.HttpRequest;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,6 +29,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import test.test.myapplication.supp.Constants;
+import test.test.myapplication.supp.GalleryDetail;
 import test.test.myapplication.supp.GalleryItem;
 import test.test.myapplication.supp.PictureDownloader;
 
@@ -39,7 +41,7 @@ public class DetailFragment extends Fragment implements PictureDownloader.Update
     private static final String TAG = "DetailFragment";
 
     private String mEndPoint;
-    private GalleryItem mItem;
+    private GalleryDetail mItem;
     private TextView mName;
     private TextView mText;
     private ImageView mImageView;
@@ -67,7 +69,7 @@ public class DetailFragment extends Fragment implements PictureDownloader.Update
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        mItem = new GalleryItem();
+        mItem = new GalleryDetail();
         mItem.setName(getArguments().getString(Constants.EXTRA_NAME));
 
         mEndPoint = "http://dev.tapptic.com/test/json.php?name=";
@@ -103,39 +105,33 @@ public class DetailFragment extends Fragment implements PictureDownloader.Update
         downloader.quit();
     }
 
-    private class MyTask extends AsyncTask<GalleryItem, Void, GalleryItem> {
+    private class MyTask extends AsyncTask<GalleryDetail, Void, GalleryDetail> {
 
         @Override
-        protected GalleryItem doInBackground(GalleryItem... params) {
+        protected GalleryDetail doInBackground(GalleryDetail... params) {
 
-            GalleryItem item = params[0];
+            GalleryDetail item = params[0];
             String name = item.getName();
             HttpRequest request = HttpRequest.get(mEndPoint+name);
-            try {
-                if (request.ok()) {
 
-                    String body = request.body();
-                    JSONObject jsonObject = new JSONObject(body);
-                    String text = jsonObject.getString("text");
-                    String url =  jsonObject.getString("image");
-                    item.setText(text);
-                    item.setBigUrl(url);
-                }
-            } catch (JSONException e) {
-                Log.e(TAG, "JSON Exception: " + e);
+            if (request.ok()) {
+                Gson gson = new Gson();
+                String body = request.body();
+                item = gson.fromJson(body, GalleryDetail.class);
             }
+
 
 
             return item;
         }
 
         @Override
-        protected void onPostExecute(GalleryItem galleryItem) {
+        protected void onPostExecute(GalleryDetail galleryItem) {
             super.onPostExecute(galleryItem);
             mItem = galleryItem;
             mName.setText(galleryItem.getName());
             mText.setText(galleryItem.getText());
-            downloader.queue(mImageView, galleryItem.geBigUrl());
+            downloader.queue(mImageView, galleryItem.getUrl());
         }
     }
 }
